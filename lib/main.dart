@@ -1,6 +1,6 @@
 import 'package:bloc_practice/Bloc/Counter/Counter_Bloc.dart';
-import 'package:bloc_practice/Equatable/Equatable%20testing.dart';
-import 'package:bloc_practice/Ui/counter/Counter_example.dart';
+import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
+import 'package:bloc_practice/Ui/switch/switch_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,10 +15,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (_) => CounterBloc(),
+        child:BlocProvider(
+          create: (context) => SwitchBloc(),
+
         child:const  MaterialApp(
-          home: CounterExample(),
+          home: SwitchExample(),
         ),
-    ) ;
+    ),
+    );
   }
 }
 
