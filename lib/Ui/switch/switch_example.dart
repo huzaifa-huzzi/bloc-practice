@@ -54,6 +54,7 @@ class _SwitchExampleState extends State<SwitchExample> {
                 BlocBuilder<SwitchBloc,SwitchState>(
                   buildWhen: (previous,current) => previous.slider != current.slider,
                     builder: (context,state){
+
                       return   Slider(value: state.slider, onChanged: (value){
                          context.read<SwitchBloc>().add(SliderEvent(slider: value));
                       });
