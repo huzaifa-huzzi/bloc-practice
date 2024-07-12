@@ -31,6 +31,7 @@ class _SwitchExampleState extends State<SwitchExample> {
                   children: [
                        const  Text('Notifications'),
                     BlocBuilder<SwitchBloc,SwitchState>(
+                      buildWhen: (previous, current) => previous.isSwitch != current.isSwitch ,
                         builder: (context,state){
                           return   Switch(value: state.isSwitch, onChanged: (newValue){
                             context.read<SwitchBloc>().add(EnableOrDisableNotifications());
@@ -51,6 +52,7 @@ class _SwitchExampleState extends State<SwitchExample> {
 
                 const SizedBox(height: 50,),
                 BlocBuilder<SwitchBloc,SwitchState>(
+                  buildWhen: (previous,current) => previous.slider != current.slider,
                     builder: (context,state){
                       return   Slider(value: state.slider, onChanged: (value){
                          context.read<SwitchBloc>().add(SliderEvent(slider: value));
