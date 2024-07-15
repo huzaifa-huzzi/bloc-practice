@@ -15,6 +15,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     return Scaffold(
       appBar: AppBar(
         title:const  Text('Favourite Screen'),
+        centerTitle: true,
       ),
     );
   }
