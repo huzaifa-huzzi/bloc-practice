@@ -2,6 +2,7 @@ import 'package:bloc_practice/Bloc/Counter/Counter_Bloc.dart';
 import 'package:bloc_practice/Bloc/Image/image_bloc.dart';
 import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
+import 'package:bloc_practice/Ui/Favourite/FavouriteScreen.dart';
 import 'package:bloc_practice/Ui/switch/switch_example.dart';
 import 'package:bloc_practice/Ui/to%20do/To%20do%20Screen.dart';
 import 'package:bloc_practice/Utils/Image_Picker_Utils.dart';
@@ -24,10 +25,15 @@ class MyApp extends StatelessWidget {
        // BlocProvider(create: (_) => ImageBloc(ImagePickerUtils()) ),
         BlocProvider(create: (_) =>TodoBloc() ),
       ],
-        child:const  MaterialApp(
-          home: ToDoScreen(),
-        ),
-    );
+        child:  MaterialApp(
+           title: 'Learning Bloc',
+          themeMode: ThemeMode.dark,
+          theme: ThemeData(
+            brightness: Brightness.dark,
+            useMaterial3: true
+          ),
+          home:const  FavouriteScreen()),
+        );
   }
 }
 
