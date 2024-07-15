@@ -29,7 +29,9 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 itemBuilder: (context,index){
                   return ListTile(
                     title: Text(state.todoList[index]),
-                    trailing: IconButton(onPressed: (){}, icon:const  Icon(Icons.delete)),
+                    trailing: IconButton(onPressed: (){
+                      context.read<TodoBloc>().add(RemoveTodoEvent(task: state.todoList[index]  ));
+                    }, icon:const  Icon(Icons.delete)),
                   );
                 }
             );
