@@ -1,11 +1,9 @@
 import 'package:bloc_practice/Bloc/Counter/Counter_Bloc.dart';
-import 'package:bloc_practice/Bloc/Image/image_bloc.dart';
+import 'package:bloc_practice/Bloc/Favourite/favourite_bloc.dart';
 import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
+import 'package:bloc_practice/Repository/favourite_repositor.dart';
 import 'package:bloc_practice/Ui/Favourite/FavouriteScreen.dart';
-import 'package:bloc_practice/Ui/switch/switch_example.dart';
-import 'package:bloc_practice/Ui/to%20do/To%20do%20Screen.dart';
-import 'package:bloc_practice/Utils/Image_Picker_Utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +22,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => SwitchBloc() ),
        // BlocProvider(create: (_) => ImageBloc(ImagePickerUtils()) ),
         BlocProvider(create: (_) =>TodoBloc() ),
+        BlocProvider(create: (_) =>FavouriteBloc(FavouriteRepository()) ),
       ],
         child:  MaterialApp(
            title: 'Learning Bloc',
