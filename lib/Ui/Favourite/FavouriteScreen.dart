@@ -1,6 +1,7 @@
 import 'package:bloc_practice/Bloc/Favourite/favourite_bloc.dart';
 import 'package:bloc_practice/Bloc/Favourite/favourite_event.dart';
 import 'package:bloc_practice/Bloc/Favourite/favourite_state.dart';
+import 'package:bloc_practice/model/Favourite_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,16 +41,22 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                  case ListStatus.failure :
                    return const Center(child: Text('something went wrong'),);
                  case ListStatus.success :
-                   ListView.builder(
+                  return ListView.builder(
+                    itemCount: state.favouriteItemList.length,
                        itemBuilder: (context,index){
                          final item = state.favouriteItemList[index];
                          return Card(
                            child: ListTile(
                              title: Text(item.value.toString()),
-                             trailing: IconButton(onPressed: (){}, icon:const  Icon(Icons.favorite_outline)),
+                             trailing: IconButton(onPressed: (){
+                               FavouriteItemModel itemModel = FavouriteItemModel(id: item.id, value: item.value,isFavourite: item.isFavourite ? false : true);
+                               context.read<FavouriteBloc>().add(FavouriteItem(item: itemModel ));
+                             }, icon:Icon(item.isFavourite ? Icons.favorite : Icons.favorite_outline_rounded)),
                            ),
                          );
                        });
+                 case ListStatus.values :
+                  return const  SizedBox();
                }
             }),
       ),
