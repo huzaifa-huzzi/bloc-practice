@@ -1,5 +1,6 @@
 import 'package:bloc_practice/Bloc/Counter/Counter_Bloc.dart';
 import 'package:bloc_practice/Bloc/Favourite/favourite_bloc.dart';
+import 'package:bloc_practice/Bloc/Posts%20Api/posts_bloc.dart';
 import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
 import 'package:bloc_practice/Repository/favourite_repositor.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
        // BlocProvider(create: (_) => ImageBloc(ImagePickerUtils()) ),
         BlocProvider(create: (_) =>TodoBloc() ),
         BlocProvider(create: (_) =>FavouriteBloc(FavouriteRepository()) ),
+        BlocProvider(create: (_) =>PostBloc() ),
       ],
         child:  MaterialApp(
            title: 'Learning Bloc',

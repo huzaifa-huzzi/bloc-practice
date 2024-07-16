@@ -14,17 +14,17 @@ class PostRepository {
         final body = jsonDecode(response.body) as List;
         return body.map((e){
           return PostModel(
-            postId: e['postId'],
+            postId: e['postId'] as int,
             email: e['title'] as String,
             body: e['body'] as String,
           );
         }).toList();
       }
 
-    }catch (e){
-      
+    }catch(e){
+
     }
-    
+    throw Exception('error While  fetching');
     
   }
 

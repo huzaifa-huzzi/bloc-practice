@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 
@@ -17,6 +18,15 @@ class _PostScreenState extends State<PostScreen> {
         title:const  Text('Post Apis'),
         centerTitle: true,
       ),
+      body: BlocBuilder(
+          builder: (context,state){
+            return ListView.builder(
+                itemBuilder: (context,index){
+                 return ListTile();
+
+            });
+
+          }),
     );
   }
 }
