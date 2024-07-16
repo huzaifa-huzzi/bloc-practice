@@ -15,7 +15,7 @@ class PostRepository {
         return body.map((e){
           return PostModel(
             postId: e['postId'] as int,
-            email: e['title'] as String,
+            email: e['email'] as String,
             body: e['body'] as String,
           );
         }).toList();

@@ -1,3 +1,7 @@
+import 'package:bloc_practice/Bloc/Posts%20Api/posts_bloc.dart';
+import 'package:bloc_practice/Bloc/Posts%20Api/posts_event.dart';
+import 'package:bloc_practice/Bloc/Posts%20Api/posts_state.dart';
+import 'package:bloc_practice/Utils/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,6 +15,15 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<PostBloc>().add(PostFetched());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +31,27 @@ class _PostScreenState extends State<PostScreen> {
         title:const  Text('Post Apis'),
         centerTitle: true,
       ),
-      body: BlocBuilder(
+      body: BlocBuilder<PostBloc,PostState>(
           builder: (context,state){
-            return ListView.builder(
-                itemBuilder: (context,index){
-                 return ListTile();
+            switch(state.postStatus){
+              case PostStatus.loading :
+                return const  CircularProgressIndicator();
+              case PostStatus.failure:
+                return  Text(state.message.toString());
+              case PostStatus.success:
+                return  ListView.builder(
+                  itemCount: state.postList.length,
+                    itemBuilder: (context,index){
+                    final item = state.postList[index];
+                      return ListTile(
+                        title: Text(item.email.toString()),
+                        subtitle: Text(item.body.toString()),
+                        
+                      );
 
-            });
+                    });
+            }
+
 
           }),
     );

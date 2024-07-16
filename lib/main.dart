@@ -5,6 +5,7 @@ import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
 import 'package:bloc_practice/Repository/favourite_repositor.dart';
 import 'package:bloc_practice/Ui/Favourite/FavouriteScreen.dart';
+import 'package:bloc_practice/Ui/Post%20screen/PostScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
             useMaterial3: true
           ),
-          home:const  FavouriteScreen()),
+          home:const  PostScreen()),
         );
   }
 }

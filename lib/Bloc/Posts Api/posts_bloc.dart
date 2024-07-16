@@ -13,15 +13,17 @@ class PostBloc extends Bloc<PostEvent,PostState>{
     on<PostFetched>(_postFetched);
   }
 
-   void _postFetched(PostFetched event ,Emitter<PostState>emit){
+   void _postFetched(PostFetched event ,Emitter<PostState>emit)async{
 
-    postRepository.fetchPost().then((value){
+   await  postRepository.fetchPost().then((value){
       emit(state.copyWith(
         postStatus: PostStatus.success,
         message: 'Your data is fetched successfully',
         postList: value
       ));
     }).onError((error,stackTrace){
+      print(error);
+      print(stackTrace);
        emit(state.copyWith(postStatus: PostStatus.failure,message: error.toString()));
     });
 
