@@ -47,7 +47,7 @@ class _PostScreenState extends State<PostScreen> {
                         border: OutlineInputBorder()
                       ),
                       onChanged: (filterKey){
-
+                       context.read<PostBloc>().add(SearchItem(filterKey));
                       },
                     ),
                     Expanded(

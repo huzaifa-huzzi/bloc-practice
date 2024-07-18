@@ -10,3 +10,9 @@ abstract class PostEvent extends Equatable {
 }
 
 class PostFetched extends PostEvent {}
+class SearchItem extends PostEvent {
+  final String search ;
+
+   SearchItem(this.search);
+
+}
