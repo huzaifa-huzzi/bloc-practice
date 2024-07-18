@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/core_patch.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_practice/Bloc/Posts%20Api/posts_event.dart';
 import 'package:bloc_practice/Bloc/Posts%20Api/posts_state.dart';
@@ -9,7 +11,7 @@ import 'package:bloc_practice/model/PostModel.dart';
 class PostBloc extends Bloc<PostEvent,PostState>{
 
    final PostRepository  postRepository = PostRepository();
-    List<PostModel> tempPostList = [] ;
+   List<PostModel> tempPostList = [] ;
 
   PostBloc():super(const PostState()){
     on<PostFetched>(_postFetched);
@@ -35,9 +37,16 @@ class PostBloc extends Bloc<PostEvent,PostState>{
    // This is second ftn
    void _filterList(SearchItem event ,Emitter<PostState>emit)async{
 
-     tempPostList = state.postList.where((element) => element.id.toString() == event.search.toString()).toList();
-     emit(state.copyWith(tempPostList: tempPostList));
-
+          if(event.search.isEmpty){
+            emit(state.copyWith(tempPostList: [],searchMessage: ''));
+          }else{
+            tempPostList = state.postList.where((element) => element.email.toString() == event.search.toString()).toList();
+              if(tempPostList.isEmpty){
+                emit(state.copyWith(tempPostList: tempPostList,searchMessage: 'No data found'));
+              }else{
+                emit(state.copyWith(tempPostList: tempPostList));
+              }
+          }
    }
 
 }

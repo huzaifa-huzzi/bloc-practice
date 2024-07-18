@@ -51,18 +51,32 @@ class _PostScreenState extends State<PostScreen> {
                       },
                     ),
                     Expanded(
-                      child: ListView.builder(
-                        itemCount: state.postList.length,
+                      child: state.searchMessage.isNotEmpty ? Center(child: Text(state.searchMessage.toString())) : ListView.builder(
+                        itemCount:state.tempPostList.isEmpty ?  state.postList.length : state.tempPostList.length ,
                           itemBuilder: (context,index){
-                          final item = state.postList[index];
-                            return 
-                                 Card(
-                                   child: ListTile(
-                                      title: Text(item.email.toString()),
-                                      subtitle: Text(item.body.toString()),
-                                      
-                                    ),
-                                 );
+
+                          if(state.tempPostList.isNotEmpty){
+                            final item = state.tempPostList[index];
+                            return
+                              Card(
+                                child: ListTile(
+                                  title: Text(item.email.toString()),
+                                  subtitle: Text(item.body.toString()),
+
+                                ),
+                              );
+                          }else{
+                            final item = state.postList[index];
+                            return
+                              Card(
+                                child: ListTile(
+                                  title: Text(item.email.toString()),
+                                  subtitle: Text(item.body.toString()),
+
+                                ),
+                              );
+                          }
+
                       
                           }),
                     ),
