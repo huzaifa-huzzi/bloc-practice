@@ -41,6 +41,15 @@ class _PostScreenState extends State<PostScreen> {
               case PostStatus.success:
                 return  Column(
                   children: [
+                    TextFormField(
+                      decoration:const  InputDecoration(
+                        hintText: 'Enter with email',
+                        border: OutlineInputBorder()
+                      ),
+                      onChanged: (filterKey){
+
+                      },
+                    ),
                     Expanded(
                       child: ListView.builder(
                         itemCount: state.postList.length,
