@@ -39,17 +39,26 @@ class _PostScreenState extends State<PostScreen> {
               case PostStatus.failure:
                 return  Text(state.message.toString());
               case PostStatus.success:
-                return  ListView.builder(
-                  itemCount: state.postList.length,
-                    itemBuilder: (context,index){
-                    final item = state.postList[index];
-                      return ListTile(
-                        title: Text(item.email.toString()),
-                        subtitle: Text(item.body.toString()),
-                        
-                      );
-
-                    });
+                return  Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: state.postList.length,
+                          itemBuilder: (context,index){
+                          final item = state.postList[index];
+                            return 
+                                 Card(
+                                   child: ListTile(
+                                      title: Text(item.email.toString()),
+                                      subtitle: Text(item.body.toString()),
+                                      
+                                    ),
+                                 );
+                      
+                          }),
+                    ),
+                  ],
+                );
             }
 
 
