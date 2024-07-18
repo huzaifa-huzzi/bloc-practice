@@ -40,11 +40,12 @@ class PostBloc extends Bloc<PostEvent,PostState>{
           if(event.search.isEmpty){
             emit(state.copyWith(tempPostList: [],searchMessage: ''));
           }else{
-            tempPostList = state.postList.where((element) => element.email.toString() == event.search.toString()).toList();
+           // tempPostList = state.postList.where((element) => element.email.toString() == event.search.toString()).toList();
+            tempPostList = state.postList.where((element) => element.email.toString().toLowerCase().contains(event.search.toLowerCase())).toList();
               if(tempPostList.isEmpty){
                 emit(state.copyWith(tempPostList: tempPostList,searchMessage: 'No data found'));
               }else{
-                emit(state.copyWith(tempPostList: tempPostList));
+                emit(state.copyWith(tempPostList: tempPostList,searchMessage: ''));
               }
           }
    }
