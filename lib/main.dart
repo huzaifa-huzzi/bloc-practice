@@ -3,10 +3,10 @@ import 'package:bloc_practice/Bloc/Favourite/favourite_bloc.dart';
 import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
 import 'package:bloc_practice/Repository/favourite_repositor.dart';
+import 'package:bloc_practice/Ui/counter/Counter_example.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'Bloc/Posts Api/posts_bloc.dart';
-import 'Ui/Post screen/PostScreen.dart';
+import 'package:bloc_practice/Bloc/Posts Api/posts_bloc.dart';
 
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
        // BlocProvider(create: (_) => ImageBloc(ImagePickerUtils()) ),
         BlocProvider(create: (_) =>TodoBloc() ),
         BlocProvider(create: (_) =>FavouriteBloc(FavouriteRepository()) ),
-        BlocProvider(create: (_) =>PostBloc() ),
+        BlocProvider(create: (_) =>PostBloc()),
       ],
         child:  MaterialApp(
            title: 'Learning Bloc',
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
             useMaterial3: true
           ),
-          home:const  PostScreen()),
+          home:const  CounterExample()),
         );
   }
 }
