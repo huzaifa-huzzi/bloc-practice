@@ -28,6 +28,13 @@ class _CounterExampleState extends State<CounterExample> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _counterBloc.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
          create: (_) => _counterBloc,
