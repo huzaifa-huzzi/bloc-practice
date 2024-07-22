@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => CounterBloc() ),
         BlocProvider(create: (_) => SwitchBloc() ),
        // BlocProvider(create: (_) => ImageBloc(ImagePickerUtils()) ),
         BlocProvider(create: (_) =>TodoBloc() ),
