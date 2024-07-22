@@ -1,4 +1,3 @@
-import 'package:bloc_practice/Bloc/Counter/Counter_Bloc.dart';
 import 'package:bloc_practice/Bloc/Favourite/favourite_bloc.dart';
 import 'package:bloc_practice/Bloc/Switch/switch_bloc.dart';
 import 'package:bloc_practice/Bloc/Todo/todo_bloc.dart';
